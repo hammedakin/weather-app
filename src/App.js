@@ -1,14 +1,12 @@
-import { Route, Routes } from "react-router-dom"
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 
-import Home from "./Components/Home"
 
 const api = {
   key: '58c46ab690337ca635d59e86fc52ee48',
   base: 'https://api.openweathermap.org/data/2.5/'
-}
+};
 
 function App() {
 
@@ -17,7 +15,7 @@ function App() {
 
   const search = (e) => {
     if (e.key === 'Enter') {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      fetch(`${ api.base }weather?q=${ query }&units=metric&APPID=${ api.key }`)
         .then(res => res.json())
         .then(res => {
           if (res.cod === 200) {
@@ -33,21 +31,21 @@ function App() {
     } else {
 
     }
-  }
+  };
 
 
   const dateBuilder = () => {
-    let d = new Date()
-    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let d = new Date();
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     let day = days[d.getDay()];
     let date = d.getDate();
-    let month = months[d.getMonth()]
+    let month = months[d.getMonth()];
     let year = d.getFullYear();
 
-    return `${day}, ${date} ${month} ${year}`
-  }
+    return `${ day }, ${ date } ${ month } ${ year }`;
+  };
   return (
     <>
       <div className={weather.main ? (weather.main.temp > 16 ? 'app warm' : 'app') : 'app'}>
